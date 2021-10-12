@@ -121,7 +121,8 @@ public class PostActivity extends AppCompatActivity {
     }
 
     private void uploadimage() {
-        if (imageUri != null) {
+        // For loading images 
+        if (imageUr!= null) {
             final ProgressDialog progressDialog = new ProgressDialog(PostActivity.this);
             progressDialog.setTitle("Uploading...");
             progressDialog.show();
@@ -142,7 +143,7 @@ public class PostActivity extends AppCompatActivity {
                             increasePostCount(count);
                             addPost(caption, getTimestamp(), String.valueOf(uri), RandomUId, userId, tags);
                             progressDialog.dismiss();
-                            Toast.makeText(PostActivity.this, "Posted successfully", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(PostActivity.this, "Posted successfully", Toast.LENGTH_LONG).show();
                             startActivity(new Intent(PostActivity.this,Home.class));
                             finish();
 
@@ -155,7 +156,7 @@ public class PostActivity extends AppCompatActivity {
                 @Override
                 public void onFailure(@NonNull Exception e) {
 
-                    progressDialog.dismiss();
+                    progressDialog.cancel();
                     Toast.makeText(PostActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(PostActivity.this,Home.class));
                     finish();
